@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 // React Library는 아래의 HTML을 자바스크립트 파일 안에 구문처럼 사용할 수 있게 해준다.
 import { CardList } from './components/card-list/card-list.component';
+import { SearchBox } from './components/search-box/search-box.component'
 import './App.css';
 
 // using a class component.
@@ -33,11 +34,9 @@ class App extends Component {
 
     return (
       <div className="App">
-        <input
-          type='search'
-          placeholder='Search Monster'
-          onChange={e =>
-            this.setState({ searchField: e.target.value })}
+        <SearchBox
+          placeholder='Search Monster !'
+          handleChange={e => this.setState({ searchField: e.target.value })}
         />
         <CardList monsters={filteredmonsters}>
         </CardList>

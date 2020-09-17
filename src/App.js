@@ -19,6 +19,13 @@ class App extends Component {
       .then(users => this.setState({ monsters: users }));
   }
 
+  // this 바인딩 때문에 arrow function 사용
+  onSearchChange = (e) => {
+    return this.setState({
+      searchField: e.target.value
+    });
+  }
+
   render() {
     const { monsters, searchField } = this.state;
     const filteredmonsters = monsters.filter(monster =>
@@ -28,10 +35,10 @@ class App extends Component {
 
     return (
       <div className="App">
-        <h1>Monset Rolodex</h1>
+        <h1>Monster Rolodex</h1>
         <SearchBox
           placeholder='Search Monster !'
-          handleChange={e => this.setState({ searchField: e.target.value })}
+          handleChange={this.onSearchChange}
         />
         <CardList monsters={filteredmonsters}>
         </CardList>
